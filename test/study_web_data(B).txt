@@ -1,0 +1,795 @@
+<program>
+  <functioncall>
+    <function>
+      <dotaccessor>
+        <object>
+          <functioncall>
+            <function>
+              <identifier name="jQuery"/>
+            </function>
+            <arguments>
+              <identifier name="document"/>
+            </arguments>
+          </functioncall>
+        </object>
+        <property>
+          <identifier name="ready"/>
+        </property>
+      </dotaccessor>
+    </function>
+    <arguments>
+      <funcexpr>
+        <identifier/>
+        <parameters/>
+        <body>
+          <functioncall>
+            <function>
+              <dotaccessor>
+                <object>
+                  <dotaccessor>
+                    <object>
+                      <identifier name="google"/>
+                    </object>
+                    <property>
+                      <identifier name="charts"/>
+                    </property>
+                  </dotaccessor>
+                </object>
+                <property>
+                  <identifier name="load"/>
+                </property>
+              </dotaccessor>
+            </function>
+            <arguments>
+              <string>current</string>
+              <object>
+                <property name="packages">
+                  <array>
+                    <string>corechart</string>
+                    <string>line</string>
+                  </array>
+                </property>
+                <property name="language">
+                  <string>zh-tw</string>
+                </property>
+              </object>
+            </arguments>
+          </functioncall>
+          <functioncall>
+            <function>
+              <dotaccessor>
+                <object>
+                  <dotaccessor>
+                    <object>
+                      <identifier name="google"/>
+                    </object>
+                    <property>
+                      <identifier name="charts"/>
+                    </property>
+                  </dotaccessor>
+                </object>
+                <property>
+                  <identifier name="setOnLoadCallback"/>
+                </property>
+              </dotaccessor>
+            </function>
+            <arguments>
+              <funcexpr>
+                <identifier/>
+                <parameters/>
+                <body>
+                  <var name="visitData">
+                    <object>
+                      <property name="point">
+                        <array>
+                          <string>37</string>
+                          <string>33</string>
+                          <string>24</string>
+                          <string>37</string>
+                          <string>46</string>
+                          <string>26</string>
+                          <string>37</string>
+                        </array>
+                      </property>
+                      <property name="xstr">
+                        <array>
+                          <string>2022/08/29</string>
+                          <string>2022/08/30</string>
+                          <string>2022/08/31</string>
+                          <string>2022/09/01</string>
+                          <string>2022/09/02</string>
+                          <string>2022/09/03</string>
+                          <string>2022/09/04</string>
+                        </array>
+                      </property>
+                    </object>
+                  </var>
+                  <var name="last7DayData">
+                    <object/>
+                  </var>
+                  <var name="dataTable">
+                    <new>
+                      <dotaccessor>
+                        <object>
+                          <dotaccessor>
+                            <object>
+                              <identifier name="google"/>
+                            </object>
+                            <property>
+                              <identifier name="visualization"/>
+                            </property>
+                          </dotaccessor>
+                        </object>
+                        <property>
+                          <identifier name="DataTable"/>
+                        </property>
+                      </dotaccessor>
+                      <arguments/>
+                    </new>
+                  </var>
+                  <var name="today">
+                    <new>
+                      <identifier name="Date"/>
+                      <arguments/>
+                    </new>
+                  </var>
+                  <var name="tmpDate">
+                    <null/>
+                  </var>
+                  <var name="maxValue">
+                    <number value="0"/>
+                  </var>
+                  <var name="rowValue">
+                    <number value="0"/>
+                  </var>
+                  <functioncall>
+                    <function>
+                      <dotaccessor>
+                        <object>
+                          <identifier name="dataTable"/>
+                        </object>
+                        <property>
+                          <identifier name="addColumn"/>
+                        </property>
+                      </dotaccessor>
+                    </function>
+                    <arguments>
+                      <string>date</string>
+                      <string>日期</string>
+                    </arguments>
+                  </functioncall>
+                  <functioncall>
+                    <function>
+                      <dotaccessor>
+                        <object>
+                          <identifier name="dataTable"/>
+                        </object>
+                        <property>
+                          <identifier name="addColumn"/>
+                        </property>
+                      </dotaccessor>
+                    </function>
+                    <arguments>
+                      <string>number</string>
+                      <string>人氣</string>
+                    </arguments>
+                  </functioncall>
+                  <assign operator="=">
+                    <left>
+                      <identifier name="visitData"/>
+                    </left>
+                    <right>
+                      <functioncall>
+                        <function>
+                          <dotaccessor>
+                            <object>
+                              <bracketaccessor>
+                                <object>
+                                  <identifier name="visitData"/>
+                                </object>
+                                <property>
+                                  <string>xstr</string>
+                                </property>
+                              </bracketaccessor>
+                            </object>
+                            <property>
+                              <identifier name="reduce"/>
+                            </property>
+                          </dotaccessor>
+                        </function>
+                        <arguments>
+                          <funcexpr>
+                            <identifier/>
+                            <parameters>
+                              <identifier name="map"/>
+                              <identifier name="e"/>
+                              <identifier name="i"/>
+                            </parameters>
+                            <body>
+                              <assign operator="=">
+                                <left>
+                                  <bracketaccessor>
+                                    <object>
+                                      <identifier name="map"/>
+                                    </object>
+                                    <property>
+                                      <identifier name="e"/>
+                                    </property>
+                                  </bracketaccessor>
+                                </left>
+                                <right>
+                                  <functioncall>
+                                    <function>
+                                      <identifier name="parseInt"/>
+                                    </function>
+                                    <arguments>
+                                      <bracketaccessor>
+                                        <object>
+                                          <bracketaccessor>
+                                            <object>
+                                              <identifier name="visitData"/>
+                                            </object>
+                                            <property>
+                                              <string>point</string>
+                                            </property>
+                                          </bracketaccessor>
+                                        </object>
+                                        <property>
+                                          <identifier name="i"/>
+                                        </property>
+                                      </bracketaccessor>
+                                      <number value="10"/>
+                                    </arguments>
+                                  </functioncall>
+                                </right>
+                              </assign>
+                              <return>
+                                <identifier name="map"/>
+                              </return>
+                            </body>
+                          </funcexpr>
+                          <object/>
+                        </arguments>
+                      </functioncall>
+                    </right>
+                  </assign>
+                  <for>
+                    <init>
+                      <var name="i">
+                        <number value="1"/>
+                      </var>
+                    </init>
+                    <condition>
+                      <binaryoperation operation="&lt;">
+                        <left>
+                          <identifier name="i"/>
+                        </left>
+                        <right>
+                          <number value="8"/>
+                        </right>
+                      </binaryoperation>
+                    </condition>
+                    <post>
+                      <unaryoperation operation="++">
+                        <identifier name="i"/>
+                      </unaryoperation>
+                    </post>
+                    <statement>
+                      <block>
+                        <assign operator="=">
+                          <left>
+                            <identifier name="tmpDate"/>
+                          </left>
+                          <right>
+                            <groupingoperator>
+                              <new>
+                                <identifier name="Date"/>
+                                <arguments/>
+                              </new>
+                            </groupingoperator>
+                          </right>
+                        </assign>
+                        <functioncall>
+                          <function>
+                            <dotaccessor>
+                              <object>
+                                <identifier name="tmpDate"/>
+                              </object>
+                              <property>
+                                <identifier name="setDate"/>
+                              </property>
+                            </dotaccessor>
+                          </function>
+                          <arguments>
+                            <binaryoperation operation="-">
+                              <left>
+                                <functioncall>
+                                  <function>
+                                    <dotaccessor>
+                                      <object>
+                                        <identifier name="today"/>
+                                      </object>
+                                      <property>
+                                        <identifier name="getDate"/>
+                                      </property>
+                                    </dotaccessor>
+                                  </function>
+                                  <arguments/>
+                                </functioncall>
+                              </left>
+                              <right>
+                                <identifier name="i"/>
+                              </right>
+                            </binaryoperation>
+                          </arguments>
+                        </functioncall>
+                        <assign operator="=">
+                          <left>
+                            <identifier name="tmpDate"/>
+                          </left>
+                          <right>
+                            <binaryoperation operation="+">
+                              <left>
+                                <binaryoperation operation="+">
+                                  <left>
+                                    <binaryoperation operation="+">
+                                      <left>
+                                        <binaryoperation operation="+">
+                                          <left>
+                                            <binaryoperation operation="+">
+                                              <left>
+                                                <binaryoperation operation="+">
+                                                  <left>
+                                                    <string></string>
+                                                  </left>
+                                                  <right>
+                                                    <functioncall>
+                                                      <function>
+                                                        <dotaccessor>
+                                                          <object>
+                                                            <identifier name="tmpDate"/>
+                                                          </object>
+                                                          <property>
+                                                            <identifier name="getFullYear"/>
+                                                          </property>
+                                                        </dotaccessor>
+                                                      </function>
+                                                      <arguments/>
+                                                    </functioncall>
+                                                  </right>
+                                                </binaryoperation>
+                                              </left>
+                                              <right>
+                                                <string>/</string>
+                                              </right>
+                                            </binaryoperation>
+                                          </left>
+                                          <right>
+                                            <groupingoperator>
+                                              <conditional>
+                                                <condition>
+                                                  <binaryoperation operation="&lt;">
+                                                    <left>
+                                                      <functioncall>
+                                                        <function>
+                                                          <dotaccessor>
+                                                            <object>
+                                                            <identifier name="tmpDate"/>
+                                                            </object>
+                                                            <property>
+                                                            <identifier name="getMonth"/>
+                                                            </property>
+                                                          </dotaccessor>
+                                                        </function>
+                                                        <arguments/>
+                                                      </functioncall>
+                                                    </left>
+                                                    <right>
+                                                      <number value="9"/>
+                                                    </right>
+                                                  </binaryoperation>
+                                                </condition>
+                                                <value1>
+                                                  <binaryoperation operation="+">
+                                                    <left>
+                                                      <string>0</string>
+                                                    </left>
+                                                    <right>
+                                                      <groupingoperator>
+                                                        <binaryoperation operation="+">
+                                                          <left>
+                                                            <functioncall>
+                                                            <function>
+                                                            <dotaccessor>
+                                                            <object>
+                                                            <identifier name="tmpDate"/>
+                                                            </object>
+                                                            <property>
+                                                            <identifier name="getMonth"/>
+                                                            </property>
+                                                            </dotaccessor>
+                                                            </function>
+                                                            <arguments/>
+                                                            </functioncall>
+                                                          </left>
+                                                          <right>
+                                                            <number value="1"/>
+                                                          </right>
+                                                        </binaryoperation>
+                                                      </groupingoperator>
+                                                    </right>
+                                                  </binaryoperation>
+                                                </value1>
+                                                <value2>
+                                                  <binaryoperation operation="+">
+                                                    <left>
+                                                      <functioncall>
+                                                        <function>
+                                                          <dotaccessor>
+                                                            <object>
+                                                            <identifier name="tmpDate"/>
+                                                            </object>
+                                                            <property>
+                                                            <identifier name="getMonth"/>
+                                                            </property>
+                                                          </dotaccessor>
+                                                        </function>
+                                                        <arguments/>
+                                                      </functioncall>
+                                                    </left>
+                                                    <right>
+                                                      <number value="1"/>
+                                                    </right>
+                                                  </binaryoperation>
+                                                </value2>
+                                              </conditional>
+                                            </groupingoperator>
+                                          </right>
+                                        </binaryoperation>
+                                      </left>
+                                      <right>
+                                        <string>/</string>
+                                      </right>
+                                    </binaryoperation>
+                                  </left>
+                                  <right>
+                                    <groupingoperator>
+                                      <conditional>
+                                        <condition>
+                                          <binaryoperation operation="&lt;">
+                                            <left>
+                                              <functioncall>
+                                                <function>
+                                                  <dotaccessor>
+                                                    <object>
+                                                      <identifier name="tmpDate"/>
+                                                    </object>
+                                                    <property>
+                                                      <identifier name="getDate"/>
+                                                    </property>
+                                                  </dotaccessor>
+                                                </function>
+                                                <arguments/>
+                                              </functioncall>
+                                            </left>
+                                            <right>
+                                              <number value="10"/>
+                                            </right>
+                                          </binaryoperation>
+                                        </condition>
+                                        <value1>
+                                          <string>0</string>
+                                        </value1>
+                                        <value2>
+                                          <string></string>
+                                        </value2>
+                                      </conditional>
+                                    </groupingoperator>
+                                  </right>
+                                </binaryoperation>
+                              </left>
+                              <right>
+                                <functioncall>
+                                  <function>
+                                    <dotaccessor>
+                                      <object>
+                                        <identifier name="tmpDate"/>
+                                      </object>
+                                      <property>
+                                        <identifier name="getDate"/>
+                                      </property>
+                                    </dotaccessor>
+                                  </function>
+                                  <arguments/>
+                                </functioncall>
+                              </right>
+                            </binaryoperation>
+                          </right>
+                        </assign>
+                        <assign operator="=">
+                          <left>
+                            <identifier name="rowValue"/>
+                          </left>
+                          <right>
+                            <conditional>
+                              <condition>
+                                <functioncall>
+                                  <function>
+                                    <dotaccessor>
+                                      <object>
+                                        <identifier name="visitData"/>
+                                      </object>
+                                      <property>
+                                        <identifier name="hasOwnProperty"/>
+                                      </property>
+                                    </dotaccessor>
+                                  </function>
+                                  <arguments>
+                                    <identifier name="tmpDate"/>
+                                  </arguments>
+                                </functioncall>
+                              </condition>
+                              <value1>
+                                <bracketaccessor>
+                                  <object>
+                                    <identifier name="visitData"/>
+                                  </object>
+                                  <property>
+                                    <identifier name="tmpDate"/>
+                                  </property>
+                                </bracketaccessor>
+                              </value1>
+                              <value2>
+                                <number value="0"/>
+                              </value2>
+                            </conditional>
+                          </right>
+                        </assign>
+                        <if>
+                          <predicate>
+                            <binaryoperation operation="&gt;">
+                              <left>
+                                <identifier name="rowValue"/>
+                              </left>
+                              <right>
+                                <identifier name="maxValue"/>
+                              </right>
+                            </binaryoperation>
+                          </predicate>
+                          <then>
+                            <block>
+                              <assign operator="=">
+                                <left>
+                                  <identifier name="maxValue"/>
+                                </left>
+                                <right>
+                                  <identifier name="rowValue"/>
+                                </right>
+                              </assign>
+                            </block>
+                          </then>
+                        </if>
+                        <functioncall>
+                          <function>
+                            <dotaccessor>
+                              <object>
+                                <identifier name="dataTable"/>
+                              </object>
+                              <property>
+                                <identifier name="addRow"/>
+                              </property>
+                            </dotaccessor>
+                          </function>
+                          <arguments>
+                            <array>
+                              <new>
+                                <identifier name="Date"/>
+                                <arguments>
+                                  <identifier name="tmpDate"/>
+                                </arguments>
+                              </new>
+                              <identifier name="rowValue"/>
+                            </array>
+                          </arguments>
+                        </functioncall>
+                      </block>
+                    </statement>
+                  </for>
+                  <assign operator="=">
+                    <left>
+                      <identifier name="maxValue"/>
+                    </left>
+                    <right>
+                      <functioncall>
+                        <function>
+                          <dotaccessor>
+                            <object>
+                              <identifier name="Math"/>
+                            </object>
+                            <property>
+                              <identifier name="max"/>
+                            </property>
+                          </dotaccessor>
+                        </function>
+                        <arguments>
+                          <number value="2"/>
+                          <identifier name="maxValue"/>
+                        </arguments>
+                      </functioncall>
+                    </right>
+                  </assign>
+                  <var name="options">
+                    <object>
+                      <property name="fontSize">
+                        <number value="10"/>
+                      </property>
+                      <property name="hAxis">
+                        <object>
+                          <property name="format">
+                            <string>M/d</string>
+                          </property>
+                          <property name="viewWindowMode">
+                            <string>maximized</string>
+                          </property>
+                          <property name="baseline">
+                            <new>
+                              <identifier name="Date"/>
+                              <arguments>
+                                <binaryoperation operation="-">
+                                  <left>
+                                    <functioncall>
+                                      <function>
+                                        <dotaccessor>
+                                          <object>
+                                            <identifier name="today"/>
+                                          </object>
+                                          <property>
+                                            <identifier name="getTime"/>
+                                          </property>
+                                        </dotaccessor>
+                                      </function>
+                                      <arguments/>
+                                    </functioncall>
+                                  </left>
+                                  <right>
+                                    <binaryoperation operation="*">
+                                      <left>
+                                        <number value="8"/>
+                                      </left>
+                                      <right>
+                                        <number value="86400000"/>
+                                      </right>
+                                    </binaryoperation>
+                                  </right>
+                                </binaryoperation>
+                              </arguments>
+                            </new>
+                          </property>
+                        </object>
+                      </property>
+                      <property name="vAxis">
+                        <object>
+                          <property name="maxValue">
+                            <identifier name="maxValue"/>
+                          </property>
+                          <property name="ticks">
+                            <array>
+                              <number value="0"/>
+                              <functioncall>
+                                <function>
+                                  <dotaccessor>
+                                    <object>
+                                      <identifier name="Math"/>
+                                    </object>
+                                    <property>
+                                      <identifier name="floor"/>
+                                    </property>
+                                  </dotaccessor>
+                                </function>
+                                <arguments>
+                                  <binaryoperation operation="/">
+                                    <left>
+                                      <identifier name="maxValue"/>
+                                    </left>
+                                    <right>
+                                      <number value="2"/>
+                                    </right>
+                                  </binaryoperation>
+                                </arguments>
+                              </functioncall>
+                              <identifier name="maxValue"/>
+                            </array>
+                          </property>
+                        </object>
+                      </property>
+                      <property name="colors">
+                        <array>
+                          <string>orange</string>
+                        </array>
+                      </property>
+                      <property name="legend">
+                        <string>none</string>
+                      </property>
+                      <property name="chartArea">
+                        <object>
+                          <property name="width">
+                            <string>80%</string>
+                          </property>
+                          <property name="right">
+                            <number value="5"/>
+                          </property>
+                        </object>
+                      </property>
+                      <property name="backgroundColor">
+                        <string>#fffee5</string>
+                      </property>
+                      <property name="colors">
+                        <array>
+                          <string>orange</string>
+                        </array>
+                      </property>
+                    </object>
+                  </var>
+                  <var name="chart">
+                    <groupingoperator>
+                      <new>
+                        <dotaccessor>
+                          <object>
+                            <dotaccessor>
+                              <object>
+                                <identifier name="google"/>
+                              </object>
+                              <property>
+                                <identifier name="visualization"/>
+                              </property>
+                            </dotaccessor>
+                          </object>
+                          <property>
+                            <identifier name="LineChart"/>
+                          </property>
+                        </dotaccessor>
+                        <arguments>
+                          <functioncall>
+                            <function>
+                              <dotaccessor>
+                                <object>
+                                  <identifier name="document"/>
+                                </object>
+                                <property>
+                                  <identifier name="getElementById"/>
+                                </property>
+                              </dotaccessor>
+                            </function>
+                            <arguments>
+                              <string>visitor-chart</string>
+                            </arguments>
+                          </functioncall>
+                        </arguments>
+                      </new>
+                    </groupingoperator>
+                  </var>
+                  <functioncall>
+                    <function>
+                      <dotaccessor>
+                        <object>
+                          <identifier name="chart"/>
+                        </object>
+                        <property>
+                          <identifier name="draw"/>
+                        </property>
+                      </dotaccessor>
+                    </function>
+                    <arguments>
+                      <identifier name="dataTable"/>
+                      <identifier name="options"/>
+                    </arguments>
+                  </functioncall>
+                </body>
+              </funcexpr>
+            </arguments>
+          </functioncall>
+        </body>
+      </funcexpr>
+    </arguments>
+  </functioncall>
+</program>
